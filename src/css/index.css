@@ -1,0 +1,10 @@
+body {
+    background: #ffff99;
+    padding: 15%;
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+
+}
