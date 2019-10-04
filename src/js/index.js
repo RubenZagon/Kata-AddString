@@ -1,38 +1,58 @@
+/**
+ *
+ * Github de la Kata
+ *
+ * https://github.com/xpeppers/string-calculator-kata
+*/
+
 // "" -> 0
 // "1" -> 1
 // "3" -> 3
 // "1,2" ->3
 // "3,5" -> 8
 
+const getDelimiter = (string) => {
 
-const addNumbers = (string) => {
-    let add = 0;
-    let split = string.split(",");
-    console.log(`tamaño del split es: ${split.length}`)
-  
-    for (i = 0 ; i < split.length; i++) {
+}
+
+
+// Método sumar
+const addNumbers = (string, delimiter) => {
+  let add = 0;
+  let split = string.split(delimiter);
+
+  for (i = 0; i < split.length; i++) {
+    if (isNaN((parseInt(split[i]))) === false) {
+      //if (parseInt(split[i]) > 0 ){
       add = add + parseInt(split[i]);
-      console.log(`El numero a sumar es: ${split[i]}, y ahora la suma va: ${add}`);
-  
+      //}
+      //else {
+      //throw new Error('oops');
+      //}
     }
-    return add;
+
   }
-  
-  
-  const verify = (string) => {
-    if (string == "") {
-      return 0;
-    }
-  
-    if (string.includes(",") == false ) {
-      return string;
-    } else { //Si encuentra una coma pasará sumar los dos elementos
-     return addNumbers(string); 
-    }
+  return add;
+}
+
+
+const verify = (string, delimiter) => {
+  if (string == "") {
+    return 0;
   }
-  
-  
-  
-  const textToCalculate = "1,2,2,1, 6";
-  console.log(verify(textToCalculate));
-  
+
+  if (string.includes(delimiter) == false) {
+    return string;
+  } else { //Si encuentra una coma pasará sumar los dos elementos
+    return addNumbers(string, delimiter);
+  }
+}
+
+
+const delimiter = getDelimiter();
+const textToCalculate = "//;\n1;2"; /* "//[delimiter]\n[numbers...]"  */
+
+console.log(verify(textToCalculate, delimiter));
+
+
+
