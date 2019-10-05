@@ -1,3 +1,11 @@
+/**
+ * GitHub de la Kata
+ * https://github.com/xpeppers/string-calculator-kata
+ * 
+ * 
+ */
+
+
 // "" -> 0
 // "1" -> 1
 // "3" -> 3
