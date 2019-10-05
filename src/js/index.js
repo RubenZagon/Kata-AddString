@@ -5,12 +5,14 @@
  * 
  */
 
-
 // "" -> 0
 // "1" -> 1
 // "3" -> 3
 // "1,2" ->3
 // "3,5" -> 8
+
+
+
 
 const existDelimiter = (string) => {
   return (string.startsWith('//')) && (string.startsWith('\n', 3));
@@ -19,22 +21,53 @@ const existDelimiter = (string) => {
 const getDelimiter = (string) => {
   if (existDelimiter(string)) {
     return string.substring(2, 3);
+  } else {
+    return ",";
   }
 }
+
+//FUncion guardar numeros negatigos en un array.
+const saveNegativeNumbers = (string) => {
+
+  let splitString = string.split(delimiter);
+  let negatNumber = [];
+
+  for (i = 0; i < splitString.length; i++) {
+    let passElementToNumber = parseInt(splitString[i]);
+    if (!isNaN(passElementToNumber)) {
+      if (passElementToNumber < 0 ){
+        negatNumber.push(passElementToNumber);
+      }
+    }
+  }
+  console.log(negatNumber);
+  return negatNumber;
+
+}
+
+
+// #####################
+let negativeNumbers = [];
+
+console.log(saveNegativeNumbers(splitString));
+
+// #####################
 
 // Método sumar
 const addNumbers = (string, delimiter) => {
   let add = 0;
-  let split = string.split(delimiter);
+  let splitString = string.split(delimiter);
 
-  for (i = 0; i < split.length; i++) {
-    if (!isNaN(parseInt(split[i]))) {
-      //if (parseInt(split[i]) > 0 ){
-      add = add + parseInt(split[i]);
-      //}
-      //else {
-      //throw new Error('oops');
-      //}
+  for (i = 0; i < splitString.length; i++) {
+    let passElementToNumber = parseInt(splitString[i]);
+    if (!isNaN(passElementToNumber)) {
+      if (passElementToNumber > 0 ){
+        add = add + passElementToNumber;
+      }
+      else {
+        saveNegativeNumbers(splitString);
+        throw new Error('oops');
+      }
     }
 
   }
@@ -56,10 +89,7 @@ const verify = (string, delimiter) => {
 
 
 
-const textToCalculate = "//;\n1;2;3;98"; /* "//[delimiter]\n[numbers...]"  */
+
+const textToCalculate = "1,4,-1"; /* "//[delimiter]\n[numbers...]"  */
 const delimiter = getDelimiter(textToCalculate);
-
 console.log(verify(textToCalculate, delimiter));
-
-
-
