@@ -26,7 +26,7 @@ const getDelimiter = (string) => {
   }
 }
 
-//FUncion guardar numeros negatigos en un array.
+//Funcion guardar numeros negatigos en un array.
 const saveNegativeNumbers = (string) => {
 
   let splitString = string.split(delimiter);
@@ -41,29 +41,41 @@ const saveNegativeNumbers = (string) => {
     }
   }
   return negatNumber;
-
 }
 
 
+const generateErrorForNegativeNumbers = (string) => {
+  throw new Error('Negativos no están permitidos: '+ saveNegativeNumbers(string));
+}
 
+const splitStringToArray = (string, delimiter) => {
+  return string.split(delimiter);
+}
+
+let passElementToNumber = (string, delimiter, i) => {
+
+}
 
 // Método sumar
 const addNumbers = (string, delimiter) => {
   let add = 0;
-  let splitString = string.split(delimiter);
+  let splitText = splitStringToArray(string, delimiter);
 
-  for (i = 0; i < splitString.length; i++) {
-    let passElementToNumber = parseInt(splitString[i]);
+  //for (i = 0; i < splitString.length; i++) {
+  for (i = 0; i < splitText.length; i++) {
+
+    let passElementToNumber = parseInt(splitText[i]);
+
     if (!isNaN(passElementToNumber)) {
       if (passElementToNumber > 0 ){
-        add = add + passElementToNumber;
+        if (passElementToNumber < 1001){
+          add = add + passElementToNumber;
+        }
       }
       else {
-        
-        throw new Error('Negativos no están permitidos: '+ saveNegativeNumbers(string));
+        generateErrorForNegativeNumbers(string);
       }
     }
-
   }
   return add;
 }
@@ -73,15 +85,18 @@ const verify = (string, delimiter) => {
   if (string == "") {
     return 0;
   }
-
+  
   if (!string.includes(delimiter)) {
     return string;
-  } else { //Si encuentra una coma pasará sumar los dos elementos
+  } else {
     return addNumbers(string, delimiter);
   }
 }
 
 
-const textToCalculate = "-3,1,4,-1,-2"; /* "//[delimiter]\n[numbers...]"  */
+
+
+const textToCalculate = "//.\n3.3.6.1000.5.2000"; /* "//[delimiter]\n[numbers...]"  */
 const delimiter = getDelimiter(textToCalculate);
+
 console.log(verify(textToCalculate, delimiter));
