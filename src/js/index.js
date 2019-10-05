@@ -40,18 +40,12 @@ const saveNegativeNumbers = (string) => {
       }
     }
   }
-  console.log(negatNumber);
   return negatNumber;
 
 }
 
 
-// #####################
-let negativeNumbers = [];
 
-console.log(saveNegativeNumbers(splitString));
-
-// #####################
 
 // Método sumar
 const addNumbers = (string, delimiter) => {
@@ -65,8 +59,8 @@ const addNumbers = (string, delimiter) => {
         add = add + passElementToNumber;
       }
       else {
-        saveNegativeNumbers(splitString);
-        throw new Error('oops');
+        
+        throw new Error('Negativos no están permitidos: '+ saveNegativeNumbers(string));
       }
     }
 
@@ -88,8 +82,6 @@ const verify = (string, delimiter) => {
 }
 
 
-
-
-const textToCalculate = "1,4,-1"; /* "//[delimiter]\n[numbers...]"  */
+const textToCalculate = "-3,1,4,-1,-2"; /* "//[delimiter]\n[numbers...]"  */
 const delimiter = getDelimiter(textToCalculate);
 console.log(verify(textToCalculate, delimiter));
