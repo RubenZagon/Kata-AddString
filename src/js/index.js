@@ -34,12 +34,11 @@ const saveNegativeNumbers = (string) => {
 
   for (i = 0; i < splitString.length; i++) {
     let passElementToNumber = parseInt(splitString[i]);
-    if (!isNaN(passElementToNumber)) {
-      if (passElementToNumber < 0) {
-        negatNumber.push(passElementToNumber);
-      }
+    if (!isNaN(passElementToNumber) && (!passElementToNumber >= 0)) {
+      negatNumber.push(passElementToNumber);
     }
   }
+
   return negatNumber;
 }
 
