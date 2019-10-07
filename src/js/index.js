@@ -1,8 +1,8 @@
 /**
  * GitHub de la Kata
  * https://github.com/xpeppers/string-calculator-kata
- * 
- * 
+ *
+ *
  */
 
 // "" -> 0
@@ -35,7 +35,7 @@ const saveNegativeNumbers = (string) => {
   for (i = 0; i < splitString.length; i++) {
     let passElementToNumber = parseInt(splitString[i]);
     if (!isNaN(passElementToNumber)) {
-      if (passElementToNumber < 0 ){
+      if (passElementToNumber < 0) {
         negatNumber.push(passElementToNumber);
       }
     }
@@ -45,7 +45,7 @@ const saveNegativeNumbers = (string) => {
 
 
 const generateErrorForNegativeNumbers = (string) => {
-  throw new Error('Negativos no están permitidos: '+ saveNegativeNumbers(string));
+  throw new Error('Negativos no están permitidos: ' + saveNegativeNumbers(string));
 }
 
 const splitStringToArray = (string, delimiter) => {
@@ -61,14 +61,13 @@ const addNumbers = (string, delimiter) => {
   let add = 0;
   let splitText = splitStringToArray(string, delimiter);
 
-  //for (i = 0; i < splitString.length; i++) {
   for (i = 0; i < splitText.length; i++) {
 
     let passElementToNumber = parseInt(splitText[i]);
 
     if (!isNaN(passElementToNumber)) {
-      if (passElementToNumber > 0 ){
-        if (passElementToNumber < 1001){
+      if (passElementToNumber > 0) {
+        if (passElementToNumber < 1001) {
           add = add + passElementToNumber;
         }
       }
@@ -85,7 +84,7 @@ const verify = (string, delimiter) => {
   if (string == "") {
     return 0;
   }
-  
+
   if (!string.includes(delimiter)) {
     return string;
   } else {
